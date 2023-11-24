@@ -1,0 +1,81 @@
+[
+  {
+    "name": "Apple reveals Apple Watch Series 7",
+    "image": "https://i.ibb.co/2vzjFMn/Apple-watch-series7-hero-09142021-big-jpg-slideshow-medium-2x.jpg",
+    "type": "regular",
+    "vote": 5,
+    "tag": "watch",
+    "code": 101,
+    "date": "2023-01-10T08:00:00Z",
+    "time": "124234325",
+    "link": "https://www.apple.com/newsroom/images/product/watch/standard/Apple_watch-series7_hero_09142021_big.jpg.slideshow-medium_2x.jpg"
+  },
+  {
+    "name": "Dell laptop",
+    "image": "https://i.ibb.co/BTCh7gW/businesslaptops-2048px-0943.jpg",
+    "type": "regular",
+    "vote": 2,
+    "tag": "laptop",
+    "code": 102,
+    "date": "2023-02-15T12:30:00Z",
+    "time": "124234323",
+    "link": "https://cdn.thewirecutter.com/wp-content/media/2023/06/businesslaptops-2048px-0943.jpg"
+  },
+  {
+    "name": "Refurbished Apple Watch Series 8",
+    "image": "https://i.ibb.co/Wvjw5Sd/FNVJ3-wid-1144-hei-1144-fmt-jpeg-qlt-90.jpg",
+    "type": "featured",
+    "vote": 0,
+    "tag": "watch",
+    "code": 103,
+    "date": "2023-03-20T18:45:00Z",
+    "time": "2023-03-20T18:45:00Z",
+    "link": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/FNVJ3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1675957545290"
+  },
+  {
+    "name": "HP Laptop 15-fc0003nm",
+    "image": "https://i.ibb.co/mHD05Fq/c08484411.png",
+    "type": "regular",
+    "vote": 0,
+    "tag": "watch",
+    "code": 104,
+    "date": "2023-03-20T18:45:00Z",
+    "time": "2023-03-20T18:45:00Z",
+    "link": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08484411.png"
+  },
+  {
+    "name": "PS5 PlayStation 5 PULSE ",
+    "image": "https://i.ibb.co/PghnDyd/475914-Product-0-I-637350818272217734.jpg",
+    "type": "trending",
+    "vote": 0,
+    "tag": "headset",
+    "code": 103,
+    "date": "2023-03-20T18:45:00Z",
+    "time": "13413523",
+    "link": "https://cdn.shopify.com/s/files/1/0024/9803/5810/products/475914-Product-0-I-637350818272217734.jpg?v=1599449094"
+  },
+  {
+    "name": "Wireless headset ES56 Scout TWS",
+    "image": "https://i.ibb.co/2ncD973/hoco-es56-scout-tws-wireless-bt-headset.jpg",
+    "type": "regular",
+    "vote": 0,
+    "tag": "headset",
+    "code": 103,
+    "date": "2023-03-20T18:45:00Z",
+    "time": "1232413",
+    "link": "https://hocotech.com/wp-content/uploads/2021/11/hoco-es56-scout-tws-wireless-bt-headset.jpg"
+  },
+  {
+    "name": "Xiaomi 13T Pro",
+    "image": "https://i.ibb.co/HDwdyvx/4796e703846ff6b8afdca74fc2755a10-200x200.png",
+    "type": "regular",
+    "vote": 0,
+    "tag": "mobile",
+    "code": 103,
+    "date": "2023-03-20T18:45:00Z",
+    "time": "145325235",
+    "link": "https://i02.appmifile.com/66_operator_global/27/09/2023/48107ed1f152548514d9ff1a8c535ce2.jpg?f=webp"
+  }
+ 
+
+]
