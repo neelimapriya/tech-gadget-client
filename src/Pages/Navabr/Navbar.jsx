@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/logo-12.png'
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
+    const {user}=useAuth()
 
     const navlink=(
         <>
@@ -64,7 +66,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn bg-white text-red-500">Login</a>
+          <Link to='/login'>
+          <div className="flex flex-col justify-center items-center ">
+            <h2 className="text-xl font-semibold font-serif">Sign Up</h2>
+            <p>Or,Create an account</p>
+          </div>
+          </Link>
         </div>
       </div>
     </div>
