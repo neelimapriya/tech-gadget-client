@@ -4,10 +4,10 @@ import Cards from "../Cards/Cards";
 
 const Products = () => {
   const axiosPublic = useAxiosPublic();
+//   const {loading}=useAuth()
   const {
     data: products = [],
-    isPending: loading,
-    refetch,
+    isPending: loading,refetch
   } = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
@@ -24,9 +24,9 @@ const Products = () => {
         </h2>
         <p className="flex justify-center items-center mb-8 text-[9px] md:text-xl ">The place to launch and discover new tech products. <span className="text-yellow-600 pl-2"> Take a tour.</span></p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3  justify-center gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3  justify-center gap-4">
         {
-            products?.map(product=><Cards key={product._id} item={product}></Cards>)
+            products?.map(product=><Cards refetch={refetch} key={product._id} item={product}></Cards>)
         }
       </div>
     </div>
