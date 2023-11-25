@@ -18,7 +18,7 @@ const SocialLogin = () => {
                 email:result?.user?.email,
                 name:result?.user?.displayName
             }
-            axiosPublic.post('/user', userInfo)
+            axiosPublic.post('/users', userInfo)
             .then(res=>{
                 console.log(res.data)
                 navigate('/')
@@ -28,11 +28,11 @@ const SocialLogin = () => {
     }
 
     return (
-        <div className="p-8">
+        <div className="">
         <div className="divider"></div>
         <div>
-            <button onClick={handleGoogleSignIn} className="btn w-full ">
-                <FaGoogle></FaGoogle>Google
+            <button onClick={handleGoogleSignIn} className="btn w-full text-orange-600">
+                <FaGoogle className="text-green-600 text-xl"></FaGoogle>Continue with Google
                 </button></div>            
         </div>
     );

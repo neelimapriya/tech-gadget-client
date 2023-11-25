@@ -1,17 +1,23 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from '../../assets/logo-12.png'
+import logo from "../../assets/logo-12.png";
 import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
-    const {user}=useAuth()
+  const { user, logOut } = useAuth();
+  const handleLogout = () => {
+    logOut().then().catch();
+  };
 
-    const navlink=(
-        <>
-        <li>
-            <NavLink>Home</NavLink>
-        </li>
-        </>
-    )
+  const navlink = (
+    <>
+      <li className="text-xl font-serif hover:text-red-700">
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li className="text-xl font-serif  hover:text-red-700">
+        <NavLink to="/products">Products</NavLink>
+      </li>
+    </>
+  );
 
   return (
     <div>
@@ -41,37 +47,54 @@ const Navbar = () => {
               {navlink}
             </ul>
           </div>
-        <div className="flex justify-center items-center outline">
-        <img src={logo} alt="" />
-        <h2 className="text-2xl font-serif text-red-700 font-bold">Tech Gadget</h2>
-        </div>
+          <div className="flex justify-center items-center outline p-1">
+            <img src={logo} className="w-10 md:w-20 lg:w-28" alt="" />
+            <h2 className="text-sm md:text-2xl font-serif text-red-700 font-bold">
+              Tech Gadget
+            </h2>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-           
-            {/* <li tabIndex={0}>
-              <details>
-                <summary>Paret</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li> */}
-           {navlink}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navlink}</ul>
         </div>
         <div className="navbar-end">
-          <Link to='/login'>
-          <div className="flex flex-col justify-center items-center ">
-            <h2 className="text-xl font-semibold font-serif">Sign Up</h2>
-            <p>Or,Create an account</p>
-          </div>
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-bottom dropdown-end ">
+              <label tabIndex={0} className=" avatar">
+                <div className="w-12 h-12 rounded-full hover:cursor-pointer  ">
+                  <img src={user?.photoURL} alt="" />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow  rounded-box w-52 border"
+              >
+                <li>
+                  <p className=" font-serif text-sm flex justify-center items-center bg-slate-50 text-red-700">
+                    {user?.displayName}
+                  </p>
+                </li>
+                <li>
+                  <a>Dashboard</a>
+                </li>
+                <li>
+                  <p
+                    onClick={handleLogout}
+                    className="text-red-700 bg-slate-50 font-serif text-sm flex justify-center items-center"
+                  >
+                    LogOut
+                  </p>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link to="/login">
+              <div className="flex flex-col justify-center items-center ">
+                <h2 className="text-xl font-semibold font-serif">Sign Up</h2>
+                <p>Or,Create an account</p>
+              </div>
+            </Link>
+          )}
         </div>
       </div>
     </div>
