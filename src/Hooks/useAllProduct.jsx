@@ -1,21 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
+import { useEffect, useState } from "react";
 
-const useAllProduct = () => {
+const useAllProduct = (search,productPerPAge,currentPage) => {
   const axiosPublic = useAxiosPublic();
+  
+  const [products, setProducts] = useState([]);
 
-  const {
-    data: products = [],
-    isPending: loading,
-    refetch,
-  } = useQuery({
-    queryKey: ["products"],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/product");
-      return res.data;
-    },
-  });
-  return [products, loading, refetch];
+  useEffect(() => {
+     
+
+    axiosPublic(`/product?search=${search}&page=${currentPage}&size=${productPerPAge}`)
+          .then(res => setProducts(res.data))
+  }, [ search, axiosPublic, productPerPAge,currentPage])
+
+  return products;
+ 
+
+  
 };
 
 export default useAllProduct;

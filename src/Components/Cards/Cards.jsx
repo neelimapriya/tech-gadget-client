@@ -15,20 +15,19 @@ const Cards = ({ item }) => {
   const email = user?.email;
   // console.log(email)
   const navigate = useNavigate();
-  const location=useLocation()
-const [upVoteCount,,refetch]=useUpVote()
-const [downCount]=useDownVote()
+  const location = useLocation();
+  const [upVoteCount, , refetch] = useUpVote();
+  const [downCount] = useDownVote();
 
-const upCount=upVoteCount?.filter(up=>up?.Id == _id)
-// console.log(upCount)
-const downvote=downCount?.filter(down=>down?.Id == _id)
-// console.log(downvote)
-
-
+  const upCount = upVoteCount?.filter((up) => up?.Id == _id);
+  // console.log(upCount)
+  const downvote = downCount?.filter((down) => down?.Id == _id);
+  // const downvote=downCount?.filter(down=>down?.Id == _id)
+  // console.log(downvote)
 
   // upvote button
   const handleUpvote = () => {
-    if(!user){
+    if (!user) {
       navigate("/login", { state: { from: location } });
     }
     if (user && email) {
@@ -38,18 +37,15 @@ const downvote=downCount?.filter(down=>down?.Id == _id)
       };
       axiosSecure.post("/upvote", upvoteInfo).then((res) => {
         if (res.data.insertedId) {
-          setButton();
-          console.log('added ')
-         
-          refetch()
-        } 
+          refetch();
+        }
       });
     }
   };
 
   // downVote button
-  const handleDown=()=>{
-    if(!user){
+  const handleDown = () => {
+    if (!user) {
       navigate("/login", { state: { from: location } });
     }
     if (user && email) {
@@ -60,13 +56,12 @@ const downvote=downCount?.filter(down=>down?.Id == _id)
       axiosSecure.post("/down", downVote).then((res) => {
         if (res.data.insertedId) {
           setButton();
-          console.log('added ')
-          refetch()
-         
-        } 
+          console.log("added ");
+          refetch();
+        }
       });
     }
-  }
+  };
 
   return (
     <div className="p-5 m-5 border">
@@ -88,17 +83,18 @@ const downvote=downCount?.filter(down=>down?.Id == _id)
           <h2 className="text-[9px]">Date: {date}</h2>
 
           <div className="mt-auto flex gap-10  p-2 justify-evenly">
-           
             <div className="">
               <button onClick={handleUpvote} className=" ">
-                <FaThumbsUp  className="hover:text-blue-600 text-xl "></FaThumbsUp>
+                <FaThumbsUp className="hover:text-blue-600 text-xl "></FaThumbsUp>
               </button>
-              <p>{upCount.length}</p>
+              <p>{upCount?.length}</p>
             </div>
 
             <div>
-              <button onClick={handleDown}><FaThumbsDown className="hover:text-blue-600 text-xl "></FaThumbsDown></button>
-             <p> {downvote?.length}</p>
+              <button onClick={handleDown}>
+                <FaThumbsDown className="hover:text-blue-600 text-xl "></FaThumbsDown>
+              </button>
+              <p> {downvote?.length}</p>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useUpVote from "../../Hooks/useUpVote";
 import useDownVote from "../../Hooks/useDownVote";
 import WriteReview from "../Review/WriteReview";
+import DisplayReview from "../Review/DisplayReview";
 
 const CardDetails = () => {
   const item = useLoaderData();
@@ -109,6 +110,7 @@ const downvote=downCount?.filter(down=>down?.Id == _id)
        
       </div>
       <WriteReview Id={_id}></WriteReview>
+      <DisplayReview Id={_id}></DisplayReview>
     </div>
   );
 };
