@@ -1,14 +1,12 @@
-import { FaPenAlt, FaTrash, FaUpload } from "react-icons/fa";
+import { FaPenAlt, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import useUpVote from "../../../Hooks/useUpVote";
-import useAllProduct from "../../../Hooks/useAllProduct";
 
-const MyProductCard = ({ item }) => {
-  const { image, date, link, name, tag, time, type, vote, _id } = item;
+const MyProductCard = ({ item, refetch }) => {
+  const { image, date,  name, tag, _id } = item;
+
   const axiosSecure =useAxiosSecure()
-  const [ , refetch]=useAllProduct()
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -23,12 +21,13 @@ const MyProductCard = ({ item }) => {
         axiosSecure.delete(`/deleteProduct/${id}`).then((res) => {
           // console.log(res.data)
           if (res.data.deletedCount > 0) {
+            refetch()
             Swal.fire({
               title: "Deleted!",
-              text: "Your product deleted.",
+              text: `${name} deleted`,
               icon: "success",
             });
-            refetch()
+           
           }
         });
       }

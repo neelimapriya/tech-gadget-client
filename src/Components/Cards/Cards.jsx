@@ -88,11 +88,7 @@ const downvote=downCount?.filter(down=>down?.Id == _id)
           <h2 className="text-[9px]">Date: {date}</h2>
 
           <div className="mt-auto flex gap-10  p-2 justify-evenly">
-            {/* <p> Vote: {vote}</p>
-            <div className="flex gap-4 justify-center items-center">
-              
-              
-            </div> */}
+           
             <div className="">
               <button onClick={handleUpvote} className=" ">
                 <FaThumbsUp  className="hover:text-blue-600 text-xl "></FaThumbsUp>

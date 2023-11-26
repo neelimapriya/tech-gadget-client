@@ -1,10 +1,73 @@
 import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useUpVote from "../../Hooks/useUpVote";
+import useDownVote from "../../Hooks/useDownVote";
+import WriteReview from "../Review/WriteReview";
 
 const CardDetails = () => {
   const item = useLoaderData();
   console.log(item);
   const { image, date, link, name, tag, time, type, vote, _id,details } = item;
+
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const email = user?.email;
+  // console.log(email)
+  const navigate = useNavigate();
+  const location=useLocation()
+  const [upVoteCount,,refetch]=useUpVote()
+const [downCount]=useDownVote()
+
+const upCount=upVoteCount?.filter(up=>up?.Id == _id)
+// console.log(upCount)
+const downvote=downCount?.filter(down=>down?.Id == _id)
+// console.log(downvote)
+
+
+
+  // upvote button
+  const handleUpvote = () => {
+    if(!user){
+      navigate("/login", { state: { from: location } });
+    }
+    if (user && email) {
+      const upvoteInfo = {
+        Id: _id,
+        email: email,
+      };
+      axiosSecure.post("/upvote", upvoteInfo).then((res) => {
+        if (res.data.insertedId) {
+         
+          console.log('added ')
+         
+          refetch()
+        } 
+      });
+    }
+  };
+
+  // downVote button
+  const handleDown=()=>{
+    if(!user){
+      navigate("/login", { state: { from: location } });
+    }
+    if (user && email) {
+      const downVote = {
+        Id: _id,
+        email: email,
+      };
+      axiosSecure.post("/down", downVote).then((res) => {
+        if (res.data.insertedId) {
+         
+          console.log('added ')
+          refetch()
+         
+        } 
+      });
+    }
+  }
   return (
     <div className="">
       <div className="bg-black text-white h-72 pb-5 px-4">
@@ -25,15 +88,27 @@ const CardDetails = () => {
 
             <p className="underline hover:text-violet-600 text-xl font-semibold"><a href={link}>View This Product</a></p>
             <p>tags: #{tag}</p>
-            <p>Vote: {vote}</p>
-            <div className="flex gap-12 justify-center items-center pt-3 ">
-              <FaThumbsUp className="hover:text-blue-600 text-2xl"></FaThumbsUp>
-              <FaThumbsDown className="hover:text-blue-600 text-2xl"></FaThumbsDown>
-            </div>
+            <p>Vote: {upCount.length}</p>
+            <div className="mt-auto flex gap-10  p-2 justify-evenly">
+           
+           <div className="">
+             <button onClick={handleUpvote} className=" ">
+               <FaThumbsUp  className="hover:text-blue-600 text-xl "></FaThumbsUp>
+             </button>
+             <p>{upCount.length}</p>
+           </div>
+
+           <div>
+             <button onClick={handleDown}><FaThumbsDown className="hover:text-blue-600 text-xl "></FaThumbsDown></button>
+            <p> {downvote?.length}</p>
+           </div>
+         </div>
             <p className="text-red-700 my-5"> Report this product</p>
 
         </div>
+       
       </div>
+      <WriteReview Id={_id}></WriteReview>
     </div>
   );
 };

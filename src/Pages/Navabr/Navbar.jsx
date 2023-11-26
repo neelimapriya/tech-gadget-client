@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar fixed  z-10 bg-opacity-5 bg-black text-white max-w-screen-xl mx-auto">
+      <div className="navbar fixed  z-10 bg-opacity-5 bg-black text-white  max-w-screen-xl mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -61,13 +61,13 @@ const Navbar = () => {
           {user ? (
             <div className="dropdown dropdown-bottom dropdown-end ">
               <label tabIndex={0} className=" avatar">
-                <div className="w-12 h-12 rounded-full hover:cursor-pointer  ">
+                <div className="w-7 h-7   md:w-12 md:h-12 rounded-full hover:cursor-pointer  ">
                   <img src={user?.photoURL} alt="" />
                 </div>
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow  rounded-box w-52 border"
+                className="dropdown-content z-[1] menu p-2 shadow  rounded-box w-32 md:w-52 border"
               >
                 <li>
                   <p className=" font-serif text-sm flex justify-center items-center  bg-slate-50 text-red-700">
@@ -96,7 +96,7 @@ const Navbar = () => {
             <Link to="/login">
               <div className="flex flex-col justify-center items-center ">
                 <h2 className="text-xl font-semibold font-serif">Sign Up</h2>
-                <p>Or,Create an account</p>
+                <p className="">Or,Create an account</p>
               </div>
             </Link>
           )}
