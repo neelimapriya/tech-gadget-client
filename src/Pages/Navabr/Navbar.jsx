@@ -70,13 +70,18 @@ const Navbar = () => {
                 className="dropdown-content z-[1] menu p-2 shadow  rounded-box w-52 border"
               >
                 <li>
-                  <p className=" font-serif text-sm flex justify-center items-center bg-slate-50 text-red-700">
+                  <p className=" font-serif text-sm flex justify-center items-center  bg-slate-50 text-red-700">
                     {user?.displayName}
                   </p>
                 </li>
                 <li>
-                  <a>Dashboard</a>
+                <Link to='/dashboard/userHome'  className=" font-serif text-sm flex justify-center items-center bg-slate-50 text-red-700">
+                
+                    Dashboard
+                  
+                  </Link>
                 </li>
+               
                 <li>
                   <p
                     onClick={handleLogout}

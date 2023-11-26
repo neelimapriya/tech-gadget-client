@@ -1,20 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Cards from "../Cards/Cards";
+import useAllProduct from "../../Hooks/useAllProduct";
 
 const Products = () => {
-  const axiosPublic = useAxiosPublic();
-//   const {loading}=useAuth()
-  const {
-    data: products = [],
-    isPending: loading,refetch
-  } = useQuery({
-    queryKey: ["product"],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/product");
-      return res.data;
-    },
-  });
+
+const [products, loading, refetch]=useAllProduct()
+  
   console.log(products);
   return (
     <div>

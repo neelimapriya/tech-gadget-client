@@ -5,6 +5,13 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Registation/Register";
 import Products from "../Components/Products/Products";
 import CardDetails from "../Components/Cards/CardDetails";
+import PrivateRoute from "./PrivateRoute";
+import Dasboard from "../Layout/Dasboard";
+import AddProducts from "../Pages/UserDashboard/AddProduct/AddProducts";
+import UserHome from "../Pages/UserDashboard/UserHome/UserHome";
+import MyProducts from "../Pages/UserDashboard/MyProducts/MyProducts";
+import UpdateProducts from "../Pages/UserDashboard/UpdateProduct/UpdateProducts";
+
 // import Products from "../Products/Products";
 
 export const router = createBrowserRouter([
@@ -38,4 +45,28 @@ export const router = createBrowserRouter([
 
       ]
     },
+    {
+      path:'dashboard',
+      element:<PrivateRoute><Dasboard></Dasboard></PrivateRoute>,
+      children:[
+        // user dashboard
+        {
+          path:'addProduct',
+          element:<AddProducts></AddProducts>
+        },
+        {
+          path:'userHome',
+          element:<UserHome></UserHome>
+        },
+        {
+          path:'userProducts',
+          element:<MyProducts></MyProducts>
+        },
+        {
+          path:"userProducts/updateProduct/:id",
+          element:<UpdateProducts></UpdateProducts>,
+          loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
+        }
+      ]
+    }
   ]);

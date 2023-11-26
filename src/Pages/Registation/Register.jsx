@@ -7,8 +7,8 @@ import SocialLogin from "../../Hooks/SocialLogin";
 
 const Image_hosting_key=import.meta.env.VITE_IMAGE_HOSTING_KEY
 const Image_hosting_Api=`https://api.imgbb.com/1/upload?key=${Image_hosting_key}`
-console.log(Image_hosting_key)
-console.log(Image_hosting_Api)
+// console.log(Image_hosting_key)
+// console.log(Image_hosting_Api)
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
   const axiosPublic = useAxiosPublic();

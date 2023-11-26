@@ -1,5 +1,5 @@
 import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
@@ -15,7 +15,8 @@ const Cards = ({ item }) => {
   const email = user?.email;
   // console.log(email)
   const navigate = useNavigate();
-const [upVoteCount,refetch]=useUpVote()
+  const location=useLocation()
+const [upVoteCount,,refetch]=useUpVote()
 const [downCount]=useDownVote()
 
 const upCount=upVoteCount?.filter(up=>up?.Id == _id)
@@ -23,8 +24,13 @@ const upCount=upVoteCount?.filter(up=>up?.Id == _id)
 const downvote=downCount?.filter(down=>down?.Id == _id)
 // console.log(downvote)
 
+
+
   // upvote button
   const handleUpvote = () => {
+    if(!user){
+      navigate("/login", { state: { from: location } });
+    }
     if (user && email) {
       const upvoteInfo = {
         Id: _id,
@@ -34,16 +40,18 @@ const downvote=downCount?.filter(down=>down?.Id == _id)
         if (res.data.insertedId) {
           setButton();
           console.log('added ')
+         
           refetch()
         } 
       });
-    }else {
-      navigate("/login", { state: { from: location } });
     }
   };
 
   // downVote button
   const handleDown=()=>{
+    if(!user){
+      navigate("/login", { state: { from: location } });
+    }
     if (user && email) {
       const downVote = {
         Id: _id,
@@ -54,9 +62,8 @@ const downvote=downCount?.filter(down=>down?.Id == _id)
           setButton();
           console.log('added ')
           refetch()
-        } else {
-          navigate("/login", { state: { from: location } });
-        }
+         
+        } 
       });
     }
   }
@@ -87,14 +94,14 @@ const downvote=downCount?.filter(down=>down?.Id == _id)
               
             </div> */}
             <div className="">
-              <button onClick={handleUpvote}  className=" ">
-                <FaThumbsUp className="hover:text-blue-600 text-xl "></FaThumbsUp>
+              <button onClick={handleUpvote} className=" ">
+                <FaThumbsUp  className="hover:text-blue-600 text-xl "></FaThumbsUp>
               </button>
               <p>{upCount.length}</p>
             </div>
 
             <div>
-              <button onClick={handleDown}><FaThumbsDown className="hover:text-blue-600 text-xl"></FaThumbsDown></button>
+              <button onClick={handleDown}><FaThumbsDown className="hover:text-blue-600 text-xl "></FaThumbsDown></button>
              <p> {downvote?.length}</p>
             </div>
           </div>
