@@ -4,18 +4,34 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaUtensils } from "react-icons/fa";
 import useAuth from "../../../Hooks/useAuth";
+import  { useState } from 'react';
+import ReactTags from 'react-tag-input';
+import { render } from 'react-dom';
+
 
 const Image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const Image_hosting_Api = `https://api.imgbb.com/1/upload?key=${Image_hosting_key}`;
 const AddProducts = () => {
   const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
+  // const [tags, setTags] = useState([]);
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   // date
   const today = new Date();
   const time = today.toLocaleString();
   console.log(time);
+
+  // tags
+  // const handleDelete = (i) => {
+  //   const newTags = [...tags];
+  //   newTags.splice(i, 1);
+  //   setTags(newTags);
+  // };
+
+  // const handleAddition = (tag) => {
+  //   setTags([...tags, tag]);
+  // };
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -102,6 +118,13 @@ const AddProducts = () => {
               required
             />
           </div>
+          {/* <div>
+          <ReactTags
+        tags={tags}
+        handleDelete={handleDelete}
+        handleAddition={handleAddition}
+      />
+          </div> */}
           <div className="form-control">
             <label className="label">
               <span className="label-text">Products Details*</span>

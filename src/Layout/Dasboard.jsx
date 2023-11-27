@@ -1,5 +1,6 @@
 import {
   FaAddressBook,
+  FaBookOpen,
   FaBookmark,
   FaCalendar,
   FaEnvelope,
@@ -8,6 +9,7 @@ import {
   FaProductHunt,
   FaSearch,
   FaShoppingCart,
+  FaSquareFull,
   FaUser,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
@@ -17,7 +19,7 @@ const Dasboard = () => {
     <div>
       <div className="flex ">
         {/* dashboard sidebar */}
-        <div className="w-64 min-h-screen bg-gradient-to-r from-pink-800 to-pink-950 text-white">
+        <div className="w-52 min-h-screen bg-gradient-to-r from-pink-800 to-pink-950 text-white">
           <ul className="menu">
             {/* shared navlinks */}
             <div className="divider"></div>
@@ -37,12 +39,20 @@ const Dasboard = () => {
                 <FaShoppingCart></FaShoppingCart> My Products
               </NavLink>
             </li>
+            {/* admin */}
             <li className="p-4">
               <NavLink to="/dashboard/AllUser">
                 <FaUser></FaUser> All User
               </NavLink>
             </li>
+            {/* modaretor */}
+            <li className="p-4">
+              <NavLink to="/dashboard/queue">
+                <FaBookOpen></FaBookOpen> Queue Page
+              </NavLink>
+            </li>
 
+          {/* home page */}
             <div className="divider"></div>
             <li className="p-4">
               <NavLink to="/">

@@ -12,6 +12,8 @@ import UserHome from "../Pages/UserDashboard/UserHome/UserHome";
 import MyProducts from "../Pages/UserDashboard/MyProducts/MyProducts";
 import UpdateProducts from "../Pages/UserDashboard/UpdateProduct/UpdateProducts";
 import Alluser from "../Pages/AdminDashboard/AllUser/Alluser";
+import QueuePage from "../Pages/ModaretorDashboard/QueuePage/QueuePage";
+import QueueProductDetails from "../Pages/ModaretorDashboard/QueuePage/QueueProductDetails";
 
 // import Products from "../Products/Products";
 
@@ -73,6 +75,16 @@ export const router = createBrowserRouter([
         {
           path:'allUser',
           element:<Alluser></Alluser>
+        },
+        // modaretor
+        {
+          path:'queue',
+          element:<QueuePage></QueuePage>
+        },
+        {
+          path:'queue/queueDetails/:id',
+          element:<QueueProductDetails></QueueProductDetails>,
+          loader:({params})=>fetch(`http://localhost:5000/getQueue/${params.id}`)
         }
       ]
     }
