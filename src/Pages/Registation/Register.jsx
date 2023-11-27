@@ -4,6 +4,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Hooks/SocialLogin";
+import { updateProfile } from "firebase/auth";
 
 const Image_hosting_key=import.meta.env.VITE_IMAGE_HOSTING_KEY
 const Image_hosting_Api=`https://api.imgbb.com/1/upload?key=${Image_hosting_key}`
@@ -35,14 +36,19 @@ const Register = () => {
      })
      
 
-     console.log(res.data)
+    //  photoUrl
+     console.log(res.data.data.display_url)
     createUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        updateUserProfile(data.name, data.photoURL)
+        // updateUserProfile(loggedUser,{data.name, data.photoURL:res.data?.data?.display_url} )
+        updateProfile(loggedUser,{
+          displayName:data.name,
+          photoURL:res.data.data.display_url
+        })
           .then(() => {
-            // create user entry in the database
+            // save user in database
             const userInfo = {
               name: data.name,
               email: data.email,
@@ -51,7 +57,6 @@ const Register = () => {
             axiosPublic.post("/users", userInfo).then((res) => {
                 console.log(res.data)
             if (res.data.insertedId) {
-                console.log("user added to the database");
               Swal.fire({
                 position: "top",
                 icon: "success",

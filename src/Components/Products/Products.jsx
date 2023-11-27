@@ -18,7 +18,7 @@ const Products = () => {
 
   
   const pages=[...Array(numberOfPage).keys()]
-  console.log(pages)
+  // console.log(pages)
 
   // search
   const handleSearch = (e) => {

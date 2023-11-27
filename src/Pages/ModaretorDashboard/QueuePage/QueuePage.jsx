@@ -14,11 +14,11 @@ const QueuePage = () => {
     },
   });
   console.log(products);
-  const [reject, setReject] = useState(products)
-
-
+  const [reject, setReject] = useState(products);
 
   const handleMakeFeatured = (product) => {
+   
+
     axiosSecure.patch(`/featured/${product._id}`).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
@@ -37,7 +37,35 @@ const QueuePage = () => {
   // handle accept delete from queue post productcollection
 
   const handleAccept = (product) => {
-    axiosSecure.post("/acceptProduct", product);
+    console.log(product);
+    const {
+      date,
+      details,
+      email,
+      image,
+      link,
+      name,
+      profile,
+      tag,
+      time,
+      type,
+      userName,
+      vote,
+    } = product;
+
+    const productInfo={ date,
+      details,
+      email,
+      image,
+      link,
+      name,
+      profile,
+      tag,
+      time,
+      type,
+      userName,
+      vote,}
+    axiosSecure.post("/acceptProduct", productInfo);
     axiosSecure.delete(`/deleteQueue/${product?._id}`).then((res) => {
       console.log(res.data);
       if (res.data.deletedCount > 0) {
@@ -52,15 +80,11 @@ const QueuePage = () => {
   };
 
   // reject button
-  const handleReject=(Id)=>{
-    const index= products.findIndex((product) => product._id === Id)
-    // // console.log(index)
-    // if(index !== -1){
-    //   const rejectedProduct=[...products]
-    //   rejectedProduct[index]={...rejectedProduct[index], status:'Rejected'}
-      setReject(index)
-    // }
-  }
+  const handleReject = (Id) => {
+    const index = products.findIndex((product) => product._id === Id);
+
+    setReject(index);
+  };
 
   return (
     <div className="mt-10 p-5">
@@ -113,17 +137,21 @@ const QueuePage = () => {
                   {/* accept */}
                   <td>
                     <button
-                   
                       onClick={() => handleAccept(product)}
                       className="btn bg-pink-900 text-white hover:text-black"
                     >
                       Accept
                     </button>
                     {/* reject */}
-                    <button onClick={()=>handleReject(product._id)} disabled={i === reject}
-                     className="btn bg-red-700 text-white hover:text-red-700"> reject</button>
+                    <button
+                      onClick={() => handleReject(product._id)}
+                      disabled={i === reject}
+                      className="btn bg-red-700 text-white hover:text-red-700"
+                    >
+                      {" "}
+                      reject
+                    </button>
                   </td>
-
                 </tr>
               ))}
             </tbody>
