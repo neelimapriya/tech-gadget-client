@@ -63,7 +63,7 @@ const Alluser = () => {
 
             Swal.fire({
               title: "Deleted!",
-              text: "Your item deleted.",
+              text: "This Person is deleted.",
               icon: "success",
             });
           }
