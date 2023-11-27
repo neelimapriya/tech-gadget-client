@@ -11,6 +11,7 @@ import AddProducts from "../Pages/UserDashboard/AddProduct/AddProducts";
 import UserHome from "../Pages/UserDashboard/UserHome/UserHome";
 import MyProducts from "../Pages/UserDashboard/MyProducts/MyProducts";
 import UpdateProducts from "../Pages/UserDashboard/UpdateProduct/UpdateProducts";
+import Alluser from "../Pages/AdminDashboard/AllUser/Alluser";
 
 // import Products from "../Products/Products";
 
@@ -67,6 +68,11 @@ export const router = createBrowserRouter([
           path:"userProducts/updateProduct/:id",
           element:<UpdateProducts></UpdateProducts>,
           loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
+        },
+        // admin
+        {
+          path:'allUser',
+          element:<Alluser></Alluser>
         }
       ]
     }

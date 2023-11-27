@@ -90,6 +90,7 @@ const Products = () => {
               className={currentPage === page ? "selected": undefined}
               onClick={() => setCurrentPage(page)} key={page}>{page}</button>)
           }
+          
            <button className="mx-3 bg-black text-white px-2 rounded-lg" onClick={handleNextPage}>Next→</button>
         <select  className="mx-3 bg-black text-white px-2 rounded-lg" value={productPerPAge} onChange={handleproductPerPAge} name="" id="">
           <option value="5">5</option>
