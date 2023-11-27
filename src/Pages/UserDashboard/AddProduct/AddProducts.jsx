@@ -118,13 +118,13 @@ const AddProducts = () => {
               required
             />
           </div>
-          {/* <div>
-          <ReactTags
+          <div>
+          {/* <ReactTags
         tags={tags}
         handleDelete={handleDelete}
         handleAddition={handleAddition}
-      />
-          </div> */}
+      /> */}
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Products Details*</span>

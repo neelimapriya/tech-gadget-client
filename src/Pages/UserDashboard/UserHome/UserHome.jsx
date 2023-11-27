@@ -1,6 +1,10 @@
+import useAdmin from "../../../Hooks/useAdmin";
 import useAuth from "../../../Hooks/useAuth";
+import useModaretor from "../../../Hooks/useModaretor";
 
 const UserHome = () => {
+  const [isAdmin] = useAdmin();
+  const [isModaretor] = useModaretor();
   const { user } = useAuth();
   const today = new Date();
     const time = today.toLocaleString();
@@ -16,6 +20,7 @@ const UserHome = () => {
         </div>
         <div className=" space-y-1">
           <h2 className="text-xl font-semibold text-pink-900">Name: {user?.displayName}</h2>
+          <h2 className="text-2xl font-semibold underline">{isAdmin ? "ADMIN":isModaretor ? "MODARETOR" : ''}</h2>
           <p><span className="font-semibold">Email:</span> {user?.email}</p>
           <p><span className="font-semibold">Profile Created: </span>{user?.metadata?.creationTime}</p>
           <p><span className="font-semibold">Last Login: </span> {user?.metadata?.lastSignInTime}</p>

@@ -14,6 +14,7 @@ import UpdateProducts from "../Pages/UserDashboard/UpdateProduct/UpdateProducts"
 import Alluser from "../Pages/AdminDashboard/AllUser/Alluser";
 import QueuePage from "../Pages/ModaretorDashboard/QueuePage/QueuePage";
 import QueueProductDetails from "../Pages/ModaretorDashboard/QueuePage/QueueProductDetails";
+import ReportedPage from "../Pages/ModaretorDashboard/ReportedPage/ReportedPage";
 
 // import Products from "../Products/Products";
 
@@ -85,6 +86,10 @@ export const router = createBrowserRouter([
           path:'queue/queueDetails/:id',
           element:<QueueProductDetails></QueueProductDetails>,
           loader:({params})=>fetch(`http://localhost:5000/getQueue/${params.id}`)
+        },
+        {
+          path:'reported',
+          element:<ReportedPage></ReportedPage>
         }
       ]
     }
