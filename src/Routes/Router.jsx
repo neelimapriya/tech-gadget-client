@@ -17,6 +17,7 @@ import QueueProductDetails from "../Pages/ModaretorDashboard/QueuePage/QueueProd
 import ReportedPage from "../Pages/ModaretorDashboard/ReportedPage/ReportedPage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import VarifiedUser from "../Pages/VarifiedUser/VarifiedUser";
+import Contact from "../Pages/Contact/Contact";
 
 
 // import Products from "../Products/Products";
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
           path:"/products/:id",
           element:<CardDetails></CardDetails>,
           loader:({params})=>fetch(`https://gadget-server.vercel.app/products/${params.id}`)
+        },
+        {
+          path:'/contact',
+          element:<Contact></Contact>
         }
 
       ]

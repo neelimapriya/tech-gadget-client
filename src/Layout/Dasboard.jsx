@@ -6,6 +6,8 @@ import {
   FaPaypal,
   FaPen,
   
+  FaProductHunt,
+  
   FaShoppingCart,
   FaUser,
   FaUserCircle,
@@ -78,9 +80,14 @@ const Dasboard = () => {
                 <FaHome></FaHome> Home
               </NavLink>
             </li>
+            <li className="p-4">
+              <NavLink to="/products">
+                <FaProductHunt></FaProductHunt>Products
+              </NavLink>
+            </li>
 
             <li className="p-4">
-              <NavLink to="/order/contact">
+              <NavLink to="/contact">
                 <FaEnvelope></FaEnvelope> Contact
               </NavLink>
             </li>

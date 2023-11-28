@@ -16,6 +16,9 @@ const Navbar = () => {
       <li className="text-xl font-serif  hover:text-red-700">
         <NavLink to="/products">Products</NavLink>
       </li>
+      <li className="text-xl font-serif  hover:text-red-700">
+        <NavLink to="/contact">Contact</NavLink>
+      </li>
     </>
   );
 
