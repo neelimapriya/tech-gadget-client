@@ -65,7 +65,7 @@ const Login = () => {
                   name="password"
                   type="text"
                   placeholder="password"
-                  className="input input-bordered"
+                  className="input input-bordered text-black"
                   required
                 />
               </div>

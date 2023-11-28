@@ -5,7 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckOutForm = () => {
+const CheckOutForm = ({money}) => {
   const stripe = useStripe();
   const element = useElements();
   const [clientSecret, setClientSecret] = useState();
@@ -15,12 +15,17 @@ const CheckOutForm = () => {
   const { user } = useAuth();
   const navigate=useNavigate()
 
-  const money = parseInt(50);
+  
+
+
+ 
+
+//   const money = parseInt(50);
   // console.log(money)
   useEffect(() => {
     if (money > 0) {
       axiosSecure.post("/create-payment-intent", { money }).then((res) => {
-        console.log(res.data.clientSecret);
+        // console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
     }
@@ -107,6 +112,8 @@ const CheckOutForm = () => {
         }}
       />
       <div className="flex flex-col items-center justify-center mt-3 ">
+        {/* coupon */}
+       
         <button className="btn mt-2 bg-blue-700 text-white w-32 hover:bg-green-700">
           Pay
         </button>

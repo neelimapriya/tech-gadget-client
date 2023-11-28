@@ -14,6 +14,7 @@ import { IoIosWarning } from "react-icons/io";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useModaretor from "../Hooks/useModaretor";
+import { MdVerified } from "react-icons/md";
 
 const Dasboard = () => {
   const [isAdmin] = useAdmin();
@@ -48,6 +49,11 @@ const Dasboard = () => {
                 <IoIosWarning className="text-xl"/> Reported Contents
                 </NavLink>
               </li>
+              <li className="p-4">
+                <NavLink to="/dashboard/varified">
+                <MdVerified /> Verified User
+                </NavLink>
+              </li>
               </>
             ) : (
               <>
@@ -62,11 +68,7 @@ const Dasboard = () => {
                     <FaShoppingCart></FaShoppingCart> My Products
                   </NavLink>
                 </li>
-                <li className="p-4">
-                  <NavLink to="/dashboard/payment">
-                    <FaMoneyCheck></FaMoneyCheck> Payment
-                  </NavLink>
-                </li>
+                
               </>
             )}
            

@@ -16,6 +16,7 @@ import QueuePage from "../Pages/ModaretorDashboard/QueuePage/QueuePage";
 import QueueProductDetails from "../Pages/ModaretorDashboard/QueuePage/QueueProductDetails";
 import ReportedPage from "../Pages/ModaretorDashboard/ReportedPage/ReportedPage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import VarifiedUser from "../Pages/VarifiedUser/VarifiedUser";
 
 
 // import Products from "../Products/Products";
@@ -95,6 +96,10 @@ export const router = createBrowserRouter([
         {
           path:'reported',
           element:<ReportedPage></ReportedPage>
+        },
+        {
+          path:'varified',
+          element:<VarifiedUser></VarifiedUser>
         }
       ]
     }

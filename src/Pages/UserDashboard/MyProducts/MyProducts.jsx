@@ -1,20 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import useAuth from "../../../Hooks/useAuth";
+
 import MyProductCard from "./MyProductCard";
+import useUserProduct from "../../../Hooks/useUserProduct";
 
 const MyProducts = () => {
-    const axiosSecure =useAxiosSecure()
-    const {user}=useAuth()
-   
-    const {data: products = [], isPending: loading, refetch}=useQuery({
-        queryKey:['products', user?.email],
-        queryFn:async()=>{
-            const res =await axiosSecure.get(`/userProducts?email=${user?.email}`)
-            return res.data;
-        }
-    })
-   
+    const [products,loading, refetch]=useUserProduct()
       console.log(products)
       
     return (

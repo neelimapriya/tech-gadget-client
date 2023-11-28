@@ -7,12 +7,21 @@ import useAuth from "../../../Hooks/useAuth";
 import  { useState } from 'react';
 import ReactTags from 'react-tag-input';
 import { render } from 'react-dom';
+import useUserProduct from "../../../Hooks/useUserProduct";
+import useVerified from "../../../Hooks/useVerified";
 
 
 const Image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const Image_hosting_Api = `https://api.imgbb.com/1/upload?key=${Image_hosting_key}`;
 const AddProducts = () => {
   const { user } = useAuth();
+  const [products]=useUserProduct()
+  const [Verified]=useVerified()
+  const verifiedUser= Verified?.filter(item=>item.email === user.email)
+  console.log(verifiedUser)
+  console.log(products)
+
+
   const { register, handleSubmit, reset } = useForm();
   // const [tags, setTags] = useState([]);
   const axiosPublic = useAxiosPublic();
@@ -144,9 +153,10 @@ const AddProducts = () => {
           </div>
           <div className="form-control mt-6">
             <input
+            disabled={verifiedUser.length===0 && products.length >0}
               type="submit"
               value="POST"
-              className="text-xl font-semibold bg-gradient-to-r from-pink-800 to-pink-950 text-white hover:from-green-700 hover:to-yellow-500 py-3 rounded-lg"
+              className="btn text-xl font-semibold bg-gradient-to-r from-pink-800 to-pink-950 text-white hover:from-green-700 hover:to-yellow-500 py-3 rounded-lg"
             />
           </div>
         </form>

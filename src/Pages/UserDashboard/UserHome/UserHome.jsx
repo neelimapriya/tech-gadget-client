@@ -1,15 +1,20 @@
 import useAdmin from "../../../Hooks/useAdmin";
 import useAuth from "../../../Hooks/useAuth";
 import useModaretor from "../../../Hooks/useModaretor";
+import useVerified from "../../../Hooks/useVerified";
 
 import Payment from "../../CeckOutForm/Payment";
+import { MdVerified } from "react-icons/md";
 
 const UserHome = () => {
   const [isAdmin] = useAdmin();
   const [isModaretor] = useModaretor();
+  const [Verified, loading, refetch]=useVerified()
   const { user } = useAuth();
   const today = new Date();
   const time = today.toLocaleString();
+  const verifiedUser= Verified?.filter(item=>item.email === user.email)
+  console.log(verifiedUser)
 
  
   return (
@@ -40,6 +45,10 @@ const UserHome = () => {
             <span className="font-semibold">Last Login: </span>{" "}
             {user?.metadata?.lastSignInTime}
           </p>
+          {
+            verifiedUser.length >0 && 
+            <h2 className="text-2xl font-bold uppercase text-green-800 font-serif flex items-center"><MdVerified /> Verified</h2>
+          }
         </div>
       </div>
       {/* payment */}
