@@ -15,6 +15,8 @@ import Alluser from "../Pages/AdminDashboard/AllUser/Alluser";
 import QueuePage from "../Pages/ModaretorDashboard/QueuePage/QueuePage";
 import QueueProductDetails from "../Pages/ModaretorDashboard/QueuePage/QueueProductDetails";
 import ReportedPage from "../Pages/ModaretorDashboard/ReportedPage/ReportedPage";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+
 
 // import Products from "../Products/Products";
 
@@ -22,6 +24,7 @@ export const router = createBrowserRouter([
     {
       path: "/",
       element:<Main></Main>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path:'/',
@@ -53,6 +56,7 @@ export const router = createBrowserRouter([
     {
       path:'dashboard',
       element:<PrivateRoute><Dasboard></Dasboard></PrivateRoute>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         // user dashboard
         {
@@ -72,6 +76,7 @@ export const router = createBrowserRouter([
           element:<UpdateProducts></UpdateProducts>,
           loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
         },
+        
         // admin
         {
           path:'allUser',

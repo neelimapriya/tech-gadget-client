@@ -2,6 +2,8 @@ import {
   FaBookOpen,
   FaEnvelope,
   FaHome,
+  FaMoneyCheck,
+  FaPaypal,
   FaPen,
   
   FaShoppingCart,
@@ -59,14 +61,15 @@ const Dasboard = () => {
                   <NavLink to="/dashboard/userProducts">
                     <FaShoppingCart></FaShoppingCart> My Products
                   </NavLink>
-                </li>{" "}
+                </li>
+                <li className="p-4">
+                  <NavLink to="/dashboard/payment">
+                    <FaMoneyCheck></FaMoneyCheck> Payment
+                  </NavLink>
+                </li>
               </>
             )}
-            {/* admin */}
-
-            {/* modaretor */}
-
-            {/* home page */}
+           
             <div className="divider"></div>
             <li className="p-4">
               <NavLink to="/">
