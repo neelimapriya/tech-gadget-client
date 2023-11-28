@@ -19,10 +19,10 @@ const UserHome = () => {
  
   return (
     <div className="my-10 p-5 ">
-      <h2 className="text-center text-4xl font-serif font-bold underline mb-1">
+      <h2 className="text-center text-xl md:text-4xl font-serif font-bold underline mb-1">
         MY HOME
       </h2>
-      <p className="text-center">{time}</p>
+      <p className="text-center text-xs md:text-base">{time}</p>
       <div className="flex flex-col md:flex-row justify-center mt-10 gap-3">
         <div className="w-32 h-32">
           <img src={user?.photoURL} alt="" />
@@ -37,11 +37,11 @@ const UserHome = () => {
           <p>
             <span className="font-semibold">Email:</span> {user?.email}
           </p>
-          <p>
-            <span className="font-semibold">Profile Created: </span>
+          <p className="text-xs md:text-base">
+            <span className=" md:font-semibold">Profile Created: </span>
             {user?.metadata?.creationTime}
           </p>
-          <p>
+          <p className="text-xs md:text-base">
             <span className="font-semibold">Last Login: </span>{" "}
             {user?.metadata?.lastSignInTime}
           </p>

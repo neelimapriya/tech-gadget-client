@@ -48,13 +48,13 @@ const Payment = () => {
   
     return (
         <div className="mt-10 flex justify-center flex-col items-center">
-          <h2 className="text-center text-3xl font-serif font-semibold underline">
+          <h2 className="text-center text-xl md:text-3xl font-serif font-semibold underline">
             {" "}
             Membership Subscribe
           </h2>
-          <p className="text-center mt-2 font-semibold">
+          <p className="text-center text-sm md:text-lg mt-2 md:font-semibold">
             If you want to add more than 1 product in{" "}
-            <span className="text-lg font-semibold text-pink-700">
+            <span className="md:text-xl md:font-semibold text-pink-700">
               Tech Gadget
             </span>
             . You have to Subscribe to Our membership.

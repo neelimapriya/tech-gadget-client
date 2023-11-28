@@ -25,33 +25,33 @@ const Dasboard = () => {
     <div>
       <div className="flex ">
         {/* dashboard sidebar */}
-        <div className="w-52 min-h-screen bg-gradient-to-r from-pink-800 to-pink-950 text-white">
+        <div className="w-32 md:w-52 min-h-screen bg-gradient-to-r from-pink-800 to-pink-950 text-white">
           <ul className="menu">
             {/* shared navlinks */}
             <div className="divider"></div>
-            <li className="p-4">
+            <li className="p-4 text-xs md:text-base">
                   <NavLink to="/dashboard/userHome">
                     <FaUserCircle></FaUserCircle> My profile
                   </NavLink>
                 </li>
             {isAdmin ? (
-              <li className="p-4">
+              <li className="p-4 text-xs md:text-base">
                 <NavLink to="/dashboard/AllUser">
                   <FaUser></FaUser> All User
                 </NavLink>
               </li>
             ) : isModaretor ? (<>
-              <li className="p-4">
+              <li className="p-4 text-xs md:text-base">
                 <NavLink to="/dashboard/queue">
                   <FaBookOpen></FaBookOpen> Queue Page
                 </NavLink>
               </li>
-              <li className="p-4">
+              <li className="p-4 text-xs md:text-base">
                 <NavLink to="/dashboard/reported">
                 <IoIosWarning className="text-xl"/> Reported Contents
                 </NavLink>
               </li>
-              <li className="p-4">
+              <li className="p-4 text-xs md:text-base">
                 <NavLink to="/dashboard/varified">
                 <MdVerified /> Verified User
                 </NavLink>
@@ -60,12 +60,12 @@ const Dasboard = () => {
             ) : (
               <>
                 
-                <li className="p-4">
+                <li className="p-4 text-xs md:text-base">
                   <NavLink to="/dashboard/addProduct">
                     <FaPen></FaPen> Add Products
                   </NavLink>
                 </li>
-                <li className="p-4">
+                <li className="p-4 text-xs md:text-base">
                   <NavLink to="/dashboard/userProducts">
                     <FaShoppingCart></FaShoppingCart> My Products
                   </NavLink>
@@ -75,18 +75,18 @@ const Dasboard = () => {
             )}
            
             <div className="divider"></div>
-            <li className="p-4">
+            <li className="p-4 text-xs md:text-base">
               <NavLink to="/">
                 <FaHome></FaHome> Home
               </NavLink>
             </li>
-            <li className="p-4">
+            <li className="p-4 text-xs md:text-base">
               <NavLink to="/products">
                 <FaProductHunt></FaProductHunt>Products
               </NavLink>
             </li>
 
-            <li className="p-4">
+            <li className="p-4 text-xs md:text-base">
               <NavLink to="/contact">
                 <FaEnvelope></FaEnvelope> Contact
               </NavLink>

@@ -35,12 +35,12 @@ const MyProductCard = ({ item, refetch }) => {
   };
   return (
     <div className="p-5 m-5 border">
-      <div className="flex">
-        <div className="flex flex-col">
-          <div className="w-32 h-32 hover:w-36">
-            <img src={image} className="" alt="" />
+      <div className="flex flex-col md:flex-row">
+       
+          <div className=" h-full hover:w-36">
+            <img  src={image} className="w-32 h-32" alt="" />
           </div>
-        </div>
+    
         <div className="pl-2 flex flex-col ">
           <Link to={`/products/${_id}`}>
             <h2 className="text-red-700 text-xl hover:font-bold hover:cursor-pointer">
