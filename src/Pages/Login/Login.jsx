@@ -51,7 +51,7 @@ const Login = () => {
                   name="email"
                   type="email"
                   placeholder="email"
-                  className="input input-bordered"
+                  className="input text-black input-bordered"
                   required
                 />
               </div>

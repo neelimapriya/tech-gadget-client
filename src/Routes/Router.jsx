@@ -44,12 +44,12 @@ export const router = createBrowserRouter([
         {
           path:'/products',
           element:<Products></Products>,
-          loader:()=>fetch('http://localhost:5000/productCount')
+          loader:()=>fetch('https://gadget-server.vercel.app/productCount')
         },
         {
           path:"/products/:id",
           element:<CardDetails></CardDetails>,
-          loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
+          loader:({params})=>fetch(`https://gadget-server.vercel.app/products/${params.id}`)
         }
 
       ]
@@ -75,7 +75,7 @@ export const router = createBrowserRouter([
         {
           path:"userProducts/updateProduct/:id",
           element:<UpdateProducts></UpdateProducts>,
-          loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
+          loader:({params})=>fetch(`https://gadget-server.vercel.app/products/${params.id}`)
         },
         
         // admin
@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
         {
           path:'queue/queueDetails/:id',
           element:<QueueProductDetails></QueueProductDetails>,
-          loader:({params})=>fetch(`http://localhost:5000/getQueue/${params.id}`)
+          loader:({params})=>fetch(`https://gadget-server.vercel.app/getQueue/${params.id}`)
         },
         {
           path:'reported',

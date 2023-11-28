@@ -1,4 +1,4 @@
-
+import { HashLoader } from "react-spinners";
 import Cards from "../Cards/Cards";
 import useAllProduct from "../../Hooks/useAllProduct";
 import { useState } from "react";
@@ -9,7 +9,7 @@ const Products = () => {
   const [search, setSearch] = useState("");
   const [productPerPAge, setproductPerPAge] = useState(20);
   const [currentPage, setCurrentPage] = useState(0);
-  const products = useAllProduct(search, productPerPAge,currentPage);
+  const [products ,loading] = useAllProduct(search, productPerPAge,currentPage);
   console.log(products);
   const {number}=useLoaderData({})
   console.log(number)
@@ -76,16 +76,18 @@ const Products = () => {
           value="search tags"
         />
       </form>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3  justify-center gap-4">
-        {products?.map((product) => (
+     { loading ? <div className="flex justify-center items-center"> <HashLoader className="justify-center items-center"></HashLoader></div> :
+     <div className="grid md:grid-cols-2 lg:grid-cols-3  justify-center gap-4">
+        {
+         products?.map((product) => (
           <Cards key={product._id} item={product}></Cards>
         ))}
-      </div>
+      </div>}
       {/* pagination */}
-      <div className="flex text-center justify-center mb-10 pagination">
+      <div className="flex text-center justify-center mt-10 mb-10 pagination">
      
       <button  className="mx-3 bg-black text-white px-2 rounded-lg" onClick={handlePrevPage}>← Prev</button>
-          {
+          { 
             pages.map(page=><button
               className={currentPage === page ? "selected": undefined}
               onClick={() => setCurrentPage(page)} key={page}>{page}</button>)

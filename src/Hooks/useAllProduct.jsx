@@ -4,20 +4,23 @@ import useAxiosPublic from "./useAxiosPublic";
 import { useEffect, useState } from "react";
 
 const useAllProduct = (search, productPerPAge, currentPage) => {
+
+  const [loading, setLoading] = useState(true); 
   const axiosPublic = useAxiosPublic();
-  // const { loading } = useAuth();
 
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    setLoading(true);
     axiosPublic(
       `/product?search=${search}&page=${currentPage}&size=${productPerPAge}`
-    ).then((res) =>
-    
-    setProducts(res.data));
+    ).then((res) =>{
+    setLoading(false)
+    setProducts(res.data)});
+   
   }, [search, axiosPublic, productPerPAge, currentPage]);
 
-  return products;
+  return [products,loading];
 };
 
 export default useAllProduct;
