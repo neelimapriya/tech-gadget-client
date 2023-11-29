@@ -1,5 +1,6 @@
 import {
   FaBookOpen,
+  FaChartPie,
   FaEnvelope,
   FaHome,
   FaMoneyCheck,
@@ -34,12 +35,18 @@ const Dasboard = () => {
                     <FaUserCircle></FaUserCircle> My profile
                   </NavLink>
                 </li>
-            {isAdmin ? (
+            {isAdmin ? (<>
               <li className="p-4 text-xs md:text-base">
                 <NavLink to="/dashboard/AllUser">
                   <FaUser></FaUser> All User
                 </NavLink>
               </li>
+              <li className="p-4 text-xs md:text-base">
+                <NavLink to="/dashboard/statistic">
+                  <FaChartPie></FaChartPie> Statistic Page
+                </NavLink>
+              </li>
+              </>
             ) : isModaretor ? (<>
               <li className="p-4 text-xs md:text-base">
                 <NavLink to="/dashboard/queue">

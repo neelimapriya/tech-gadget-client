@@ -16,6 +16,7 @@ const Products = () => {
     setNewSearch,
     setPerPage,
     setCurrentPageValue,
+    ,newSearch,perPage,currentPageValu
   ] = useAllProduct(search, productPerPAge, currentPage);
 
   console.log(products);

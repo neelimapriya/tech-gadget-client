@@ -37,7 +37,7 @@ const [currentPageValu, setCurrentPageValue]=useState(currentPage)
     
   });
   console.log(products)
-  return [products,loading,refetch, setNewSearch,setPerPage,setCurrentPageValue,];
+  return [products,loading,refetch, setNewSearch,setPerPage,setCurrentPageValue,newSearch,perPage,currentPageValu];
 };
 
 export default useAllProduct;

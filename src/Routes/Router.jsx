@@ -22,6 +22,7 @@ import useAdmin from "../Hooks/useAdmin";
 import AdminRoute from "./AdminRoute";
 import ModaretorRoute from "./ModaretorRoute";
 import UpdateCoupon from "../Pages/AdminDashboard/CouponPage/UpdateCoupon";
+import StatisticPage from "../Pages/AdminDashboard/StatisticPage/StatisticPage";
 
 
 // import Products from "../Products/Products";
@@ -96,6 +97,10 @@ export const router = createBrowserRouter([
           path:'updateCoupon/:id',
           element:<UpdateCoupon></UpdateCoupon>,
           loader:({params})=>fetch(`http://localhost:5000/coupon/${params.id}`)
+        },
+        {
+          path:'statistic',
+          element:<StatisticPage></StatisticPage>
         },
         // modaretor
         {
