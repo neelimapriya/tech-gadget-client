@@ -7,16 +7,21 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import useVerified from "../../Hooks/useVerified";
 import useAuth from "../../Hooks/useAuth";
+import useCoupon from "../../Hooks/useCoupon";
 
 const Payment = () => {
 
     const [Verified, loading, refetch]=useVerified()
     const {user}=useAuth()
+    const [coupon]=useCoupon()
+    console.log(coupon)
     const [money, setMoney]=useState(50)
 
     const verifiedUser= Verified?.filter(item=>item.email === user.email)
     console.log(verifiedUser)
 
+    const discount=coupon[0]?.Amount;
+    const code=coupon[0]?.Code;
 
 
      // payment key
@@ -30,8 +35,8 @@ const Payment = () => {
    const form=e.target;
     const coupon =form .coupon.value;
     console.log(coupon)
-    if(coupon === 'TG20'){
-       const value = (money -20)
+    if(coupon === code){
+       const value = (money -discount)
        setMoney(value)
        Swal.fire({
         position: "top",
@@ -47,7 +52,7 @@ const Payment = () => {
 
   
     return (
-        <div className="mt-10 flex justify-center flex-col items-center">
+        <div className="mt-20 flex justify-center flex-col items-center">
           <h2 className="text-center text-xl md:text-3xl font-serif font-semibold underline">
             {" "}
             Membership Subscribe
@@ -80,7 +85,7 @@ const Payment = () => {
           >
             <Elements stripe={stripePromise}>
             <div className="modal-box bg-gradient-to-r from-pink-800 to-pink-950 text-white ">
-              <h3 className="font-bold text-lg">Hello!</h3>
+              <h3 className="font-bold text-lg">Please pay : {money}$</h3>
               <CheckOutForm money={money} ></CheckOutForm>
               <div className="modal-action">
                 <form method="dialog">

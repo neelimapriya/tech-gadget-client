@@ -1,8 +1,9 @@
 import Featured from "../../Components/Featured/Featured";
 import Trending from "../../Components/Trending/Trending";
 import About from "../About/About";
+import CouponPage from "../AdminDashboard/CouponPage/CouponPage";
 import Banner from "../Banner/Banner";
-import CouponPage from "../CouponPage/CouponPage";
+
 
 const Home = () => {
     return (

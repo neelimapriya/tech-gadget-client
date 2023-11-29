@@ -2,70 +2,73 @@ import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
-import Swal from "sweetalert2";
-import { useState } from "react";
-import useUpVote from "../../Hooks/useUpVote";
-import useDownVote from "../../Hooks/useDownVote";
 
-const Cards = ({ item }) => {
-  const { image, date, link, name, tag, time, type, vote, _id } = item;
-  const [button, setButton] = useState(false);
+import { useState } from "react";
+
+
+const Cards = ({ item,refetch }) => {
+  const { image, date, link, name, tag, time, type, vote, _id ,downVote} = item;
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const email = user?.email;
-  // console.log(email)
   const navigate = useNavigate();
   const location = useLocation();
-  const [upVoteCount, , refetch] = useUpVote();
-  const [downCount] = useDownVote();
+ 
 
-  const upCount = upVoteCount?.filter((up) => up?.Id == _id);
-  // console.log(upCount)
-  const downvote = downCount?.filter((down) => down?.Id == _id);
-  // const downvote=downCount?.filter(down=>down?.Id == _id)
-  // console.log(downvote)
 
-  // upvote button
-  const handleUpvote = () => {
+  const [like, setLike]=useState(false)
+ 
+
+  const handleUpvote=()=>{
     if (!user) {
       navigate("/login", { state: { from: location } });
     }
-    if (user && email) {
-      const upvoteInfo = {
-        Id: _id,
-        email: email,
-      };
-      axiosSecure.post("/upvote", upvoteInfo).then((res) => {
-        if (res.data.insertedId) {
-          refetch();
-        }
-      });
+    let newVote = vote
+    if(!like){
+      setLike(true)
+    newVote++
+    axiosSecure.patch(`/upvote/${_id}`, {vote:newVote}).then(res=>{
+      console.log(res.data)
+      refetch()
+    })
+    }else{
+      setLike(false)
+      newVote --
+      axiosSecure.patch(`/upvote/${_id}`, {vote:newVote}).then(res=>{
+        console.log(res.data)
+        refetch()
+      })
     }
-  };
+    
+    
+  }
+  const [disLike, setDisLike]=useState(false)
 
-  // downVote button
-  const handleDown = () => {
+  const handleDown=()=>{
     if (!user) {
       navigate("/login", { state: { from: location } });
     }
-    if (user && email) {
-      const downVote = {
-        Id: _id,
-        email: email,
-      };
-      axiosSecure.post("/down", downVote).then((res) => {
-        if (res.data.insertedId) {
-          setButton();
-          console.log("added ");
-          refetch();
-        }
-      });
+    let newVote = downVote? downVote :0
+    if(!disLike){
+      setDisLike(true)
+    newVote++
+    axiosSecure.patch(`/downvote/${_id}`, {downVote:newVote}).then(res=>{
+      console.log(res.data)
+      refetch()
+    })
+    }else{
+      setDisLike(false)
+      newVote--
+      axiosSecure.patch(`/downvote/${_id}`, {downVote:newVote}).then(res=>{
+        console.log(res.data)
+        refetch()
+      })
     }
-  };
+  }
+
 
   return (
-    <div className="p-5 m-5 border">
-      <div className="flex">
+    <div className="p-5 m-5 border shadow-md shadow-red-950">
+      <div className="flex ">
         <div className="flex flex-col">
           <div className="w-32 h-32 hover:w-36">
             <img src={image} className="" alt="" />
@@ -84,17 +87,17 @@ const Cards = ({ item }) => {
 
           <div className="mt-auto flex gap-10  p-2 justify-evenly">
             <div className="">
-              <button onClick={handleUpvote} className=" ">
-                <FaThumbsUp className="hover:text-blue-600 text-xl "></FaThumbsUp>
+              <button className=" ">
+                <FaThumbsUp onClick={handleUpvote} className="hover:text-blue-600 text-xl "></FaThumbsUp>
               </button>
-              <p>{upCount?.length}</p>
+              <p>{vote}</p>
             </div>
 
             <div>
               <button onClick={handleDown}>
                 <FaThumbsDown className="hover:text-blue-600 text-xl "></FaThumbsDown>
               </button>
-              <p> {downvote?.length}</p>
+              <p> {downVote}</p>
             </div>
           </div>
         </div>

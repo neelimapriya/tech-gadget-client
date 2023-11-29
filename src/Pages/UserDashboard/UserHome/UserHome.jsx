@@ -2,6 +2,8 @@ import useAdmin from "../../../Hooks/useAdmin";
 import useAuth from "../../../Hooks/useAuth";
 import useModaretor from "../../../Hooks/useModaretor";
 import useVerified from "../../../Hooks/useVerified";
+import CouponCard from "../../AdminDashboard/CouponPage/CouponCard";
+
 
 import Payment from "../../CeckOutForm/Payment";
 import { MdVerified } from "react-icons/md";
@@ -25,7 +27,7 @@ const UserHome = () => {
       <p className="text-center text-xs md:text-base">{time}</p>
       <div className="flex flex-col md:flex-row justify-center mt-10 gap-3">
         <div className="w-32 h-32">
-          <img src={user?.photoURL} alt="" />
+          <img className="h-32 w-32" src={user?.photoURL} alt="" />
         </div>
         <div className=" space-y-1">
           <h2 className="text-xl font-semibold text-pink-900">
@@ -57,6 +59,9 @@ const UserHome = () => {
       ) : (
         " "
       )}
+      {
+        isAdmin && <CouponCard></CouponCard>
+      }
     </div>
   );
 };

@@ -18,6 +18,10 @@ import ReportedPage from "../Pages/ModaretorDashboard/ReportedPage/ReportedPage"
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import VarifiedUser from "../Pages/VarifiedUser/VarifiedUser";
 import Contact from "../Pages/Contact/Contact";
+import useAdmin from "../Hooks/useAdmin";
+import AdminRoute from "./AdminRoute";
+import ModaretorRoute from "./ModaretorRoute";
+import UpdateCoupon from "../Pages/AdminDashboard/CouponPage/UpdateCoupon";
 
 
 // import Products from "../Products/Products";
@@ -45,12 +49,12 @@ export const router = createBrowserRouter([
         {
           path:'/products',
           element:<Products></Products>,
-          loader:()=>fetch('https://gadget-server.vercel.app/productCount')
+          loader:()=>fetch('http://localhost:5000/productCount')
         },
         {
           path:"/products/:id",
           element:<CardDetails></CardDetails>,
-          loader:({params})=>fetch(`https://gadget-server.vercel.app/products/${params.id}`)
+          loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
         },
         {
           path:'/contact',
@@ -80,31 +84,36 @@ export const router = createBrowserRouter([
         {
           path:"userProducts/updateProduct/:id",
           element:<UpdateProducts></UpdateProducts>,
-          loader:({params})=>fetch(`https://gadget-server.vercel.app/products/${params.id}`)
+          loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
         },
         
         // admin
         {
           path:'allUser',
-          element:<Alluser></Alluser>
+          element:<AdminRoute><Alluser></Alluser></AdminRoute>
+        },
+        {
+          path:'updateCoupon/:id',
+          element:<UpdateCoupon></UpdateCoupon>,
+          loader:({params})=>fetch(`http://localhost:5000/coupon/${params.id}`)
         },
         // modaretor
         {
           path:'queue',
-          element:<QueuePage></QueuePage>
+          element:<ModaretorRoute><QueuePage></QueuePage></ModaretorRoute>   
         },
         {
           path:'queue/queueDetails/:id',
           element:<QueueProductDetails></QueueProductDetails>,
-          loader:({params})=>fetch(`https://gadget-server.vercel.app/getQueue/${params.id}`)
+          loader:({params})=>fetch(`http://localhost:5000/getQueue/${params.id}`)
         },
         {
           path:'reported',
-          element:<ReportedPage></ReportedPage>
+          element:<ModaretorRoute><ReportedPage></ReportedPage></ModaretorRoute>
         },
         {
           path:'varified',
-          element:<VarifiedUser></VarifiedUser>
+          element:<ModaretorRoute><VarifiedUser></VarifiedUser></ModaretorRoute>
         }
       ]
     }

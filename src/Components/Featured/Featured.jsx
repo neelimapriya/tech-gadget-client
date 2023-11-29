@@ -7,6 +7,7 @@ const Featured = () => {
     const {
         data: products = [],
         isPending: loading,
+        refetch
        
       } = useQuery({
         queryKey: ["featured"],
@@ -26,7 +27,7 @@ const Featured = () => {
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3  justify-center gap-4">
         {
-            products?.map(product=><Cards key={product._id} item={product}></Cards>)
+            products?.map(product=><Cards key={product._id} item={product} refetch={refetch}></Cards>)
         }
       </div>
         </div>

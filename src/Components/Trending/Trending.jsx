@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // trending
 const Trending = () => {
   const axiosPublic = useAxiosPublic();
-  const { data: products = [], isPending: loading } = useQuery({
+  const { data: products = [], isPending: loading, refetch } = useQuery({
     queryKey: ["trending"],
     queryFn: async () => {
       const res = await axiosPublic.get("/trending");
@@ -24,7 +24,7 @@ const Trending = () => {
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3  justify-center gap-4">
         {products?.map((product) => (
-          <Cards key={product._id} item={product}></Cards>
+          <Cards key={product._id} item={product}refetch={refetch}></Cards>
         ))}
       </div>
       <div className="my-4 flex justify-center items-center">
