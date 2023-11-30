@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Cards from "../Cards/Cards";
+import { HashLoader } from "react-spinners";
+
 
 const Featured = () => {
     const axiosPublic=useAxiosPublic()
@@ -36,7 +38,10 @@ const Featured = () => {
         
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3  justify-center gap-4">
-        {
+        {loading ? <div className="flex justify-center items-center">
+          {" "}
+          <HashLoader className="flex justify-center items-center"></HashLoader>
+        </div>:
             products?.map(product=><Cards key={product._id} item={product} refetch={refetch}></Cards>)
         }
       </div>

@@ -77,7 +77,7 @@ const Payment = () => {
             className="btn w-52 mt-5 bg-gradient-to-r from-pink-800 to-pink-950 text-white hover:from-green-700 hover:to-yellow-500"
             onClick={() => document.getElementById("my_modal_5").showModal()}
           >
-           Pay- {money}$
+           Subscribe- {money}$
           </button>
           <dialog
             id="my_modal_5"

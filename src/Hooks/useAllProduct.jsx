@@ -11,17 +11,9 @@ const useAllProduct = (search, productPerPAge, currentPage) => {
 const [newSearch,setNewSearch]=useState(search)
 const [perPage, setPerPage]=useState(productPerPAge)
 const [currentPageValu, setCurrentPageValue]=useState(currentPage)
-  // const [products, setProducts] = useState([]);
+  
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   axiosPublic(
-  //     `/product?search=${search}&page=${currentPage}&size=${productPerPAge}`
-  //   ).then((res) =>{
-  //   setLoading(false)
-  //   setProducts(res.data)});
-   
-  // }, [search, axiosPublic, productPerPAge, currentPage]);
+
 
   console.log(newSearch)
   console.log(perPage)

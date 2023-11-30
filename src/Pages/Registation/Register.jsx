@@ -140,7 +140,7 @@ const Register = () => {
                     /(?=(.*[a-z]))(?=(.*[A-Z]))(?=(.*[0-9]))(?=(.*[!@#$%^&*()\-__+.]){1,})/,
                 })}
                 name="password"
-                type="text"
+                type="password"
                 placeholder="password"
                 className="input input-bordered"
               />

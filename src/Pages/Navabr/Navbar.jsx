@@ -98,7 +98,7 @@ const Navbar = () => {
           ) : (
             <Link to="/login">
               <div className="flex flex-col justify-center items-center ">
-                <h2 className="text-xl font-semibold font-serif">Sign Up</h2>
+                <h2 className="text-xl font-semibold font-serif">LogIn </h2>
                 <p className="">Or,Create an account</p>
               </div>
             </Link>

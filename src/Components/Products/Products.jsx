@@ -8,7 +8,7 @@ import PopularProduct from "../PopularProducts/PopularProduct";
 
 const Products = () => {
   const [search, setSearch] = useState("");
-  const [productPerPAge, setproductPerPAge] = useState(20);
+  const [productPerPAge, setproductPerPAge] = useState(search? 4 : 20);
   const [currentPage, setCurrentPage] = useState(0);
   const [
     products,
@@ -17,7 +17,6 @@ const Products = () => {
     setNewSearch,
     setPerPage,
     setCurrentPageValue,
-    ,newSearch,perPage,currentPageValu
   ] = useAllProduct(search, productPerPAge, currentPage);
 
   console.log(products);
@@ -32,14 +31,13 @@ const Products = () => {
   // search
   const handleSearch = (e) => {
     e.preventDefault();
-    const form =e.target;
-    const searchText =form.search.value;
+    const form = e.target;
+    const searchText = form.search.value;
 
     setSearch(searchText);
     setNewSearch(search);
     // refetch()
     // form.reset()
-    
   };
   // pagination
   const handleproductPerPAge = (e) => {
@@ -63,14 +61,14 @@ const Products = () => {
       setCurrentPage(currentPage + 1);
     }
   };
-  console.log(productPerPAge)
-  console.log(currentPage)
+  console.log(productPerPAge);
+  console.log(currentPage);
 
   return (
     <div>
       <div className="bg-black text-white h-56 ">
         <h2 className="pt-32 flex justify-center items-center text-2xl md:text-4xl font-serif font-semibold text-red-700">
-          Here is all products of Tech Gadget! 
+          Here is all products of Tech Gadget!
         </h2>
         <p className="flex justify-center items-center mb-8 text-[9px] md:text-xl ">
           The place to launch and discover new tech products.{" "}
@@ -97,19 +95,19 @@ const Products = () => {
         />
       </form>
       {loading ? (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center my-20">
           {" "}
           <HashLoader className="justify-center items-center"></HashLoader>
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3  justify-center gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4  justify-center gap-4">
           {products?.map((product) => (
             <Cards key={product._id} item={product} refetch={refetch}></Cards>
           ))}
         </div>
       )}
       {/* pagination */}
-      <div className="flex text-center justify-center mt-10 mb-10 pagination">
+      <div className="flex text-center justify-center mt-10 mb-10 pagination ">
         <button
           className="mx-3 bg-black text-white px-2 rounded-lg"
           onClick={handlePrevPage}

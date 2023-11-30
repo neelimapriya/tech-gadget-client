@@ -68,8 +68,8 @@ const Cards = ({ item,refetch }) => {
 
   return (
     <div className="p-5 m-5 border shadow-md shadow-red-950">
-      <div className="flex ">
-        <div className="flex flex-col">
+      <div className="flex flex-col ">
+        <div className="flex flex-col justify-center items-center">
           <div className="w-32 h-32 hover:w-36">
             <img src={image} className="" alt="" />
           </div>
@@ -88,7 +88,10 @@ const Cards = ({ item,refetch }) => {
           <div className="mt-auto flex gap-10  p-2 justify-evenly">
             <div className="">
               <button className=" ">
-                <FaThumbsUp onClick={handleUpvote} className="hover:text-blue-600 text-xl "></FaThumbsUp>
+                {
+                  like? (  <FaThumbsUp onClick={handleUpvote} className="text-blue-600 text-xl "></FaThumbsUp> ):(  <FaThumbsUp onClick={handleUpvote} className="hover:text-blue-600 text-xl "></FaThumbsUp>)
+                }
+              
               </button>
               <p>{vote}</p>
             </div>
