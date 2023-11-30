@@ -30,11 +30,11 @@ const PopularProduct = () => {
   return (
     <div className="bg-gradient-to-r from-pink-800 to-pink-950 mb-5">
       <div className="flex justify-center items-center gap-4">
-      <IoStarSharp />
+      <IoStarSharp className="text-yellow-500 drop-shadow-2xl animate-pulse" size={40} />
       <h2 className="text-center text-2xl font-bold font-serif  text-white py-3 ">
         Our popular products.
       </h2>
-      <IoStarSharp />
+      <IoStarSharp className="text-yellow-500 drop-shadow-2xl animate-pulse" size={40} />
       </div>
       <Swiper
         slidesPerView={3}

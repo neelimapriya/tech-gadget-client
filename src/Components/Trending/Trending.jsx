@@ -16,8 +16,9 @@ const Trending = () => {
   console.log(products);
   return (
     <div>
-      <div className="bg-black text-white h-20 ">
-        <h2 className="py-4 flex justify-center items-center text-center text-2xl md:text-4xl font-serif font-semibold text-red-700 animate-pulse">
+      <div className="bg-gradient-to-r from-pink-800 to-pink-950
+              text-white ">
+        <h2 className="py-5 flex justify-center items-center text-center text-2xl md:text-4xl font-serif font-semibold animate-pulse">
         Our Trending products!
         </h2>
        

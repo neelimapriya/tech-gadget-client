@@ -70,7 +70,7 @@ const Products = () => {
     <div>
       <div className="bg-black text-white h-56 ">
         <h2 className="pt-32 flex justify-center items-center text-2xl md:text-4xl font-serif font-semibold text-red-700">
-          Welcome to Tech Gadget! 👋
+          Here is all products of Tech Gadget! 
         </h2>
         <p className="flex justify-center items-center mb-8 text-[9px] md:text-xl ">
           The place to launch and discover new tech products.{" "}
