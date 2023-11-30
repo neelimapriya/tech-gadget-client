@@ -73,15 +73,15 @@ const Alluser = () => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 ">
       <div className="flex flex-col text-center justify-evenly my-4 p-5">
         <h2 className="text-3xl font-serif uppercase underline text-pink-800">
           All users of tech gadget
         </h2>
         <h2 className="text-xl ">Total Users : ({users.length})</h2>
       </div>
-      <div className="flex overflow-x-auto">
-        <table className="table overflow-x-scroll ">
+      <div className="flex overflow-x-auto  scroll-pl-6 snap-x">
+        <table className="table overflow-x-scroll snap-start ">
           {/* head */}
           <thead>
             <tr>
