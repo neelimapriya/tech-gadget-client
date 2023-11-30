@@ -4,6 +4,7 @@ import useAllProduct from "../../Hooks/useAllProduct";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import "./product.css";
+import PopularProduct from "../PopularProducts/PopularProduct";
 
 const Products = () => {
   const [search, setSearch] = useState("");
@@ -75,6 +76,9 @@ const Products = () => {
           The place to launch and discover new tech products.{" "}
           <span className="text-yellow-600 pl-2"> Take a tour.</span>
         </p>
+      </div>
+      <div>
+        <PopularProduct></PopularProduct>
       </div>
 
       <form

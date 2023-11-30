@@ -9,7 +9,7 @@ const Trending = () => {
   const { data: products = [], isPending: loading, refetch } = useQuery({
     queryKey: ["trending"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/trending");
+      const res = await axiosPublic.get(`/trending?sort=asc`);
       return res.data;
     },
   });

@@ -80,8 +80,8 @@ const Alluser = () => {
         </h2>
         <h2 className="text-xl ">Total Users : ({users.length})</h2>
       </div>
-      <div className="overflow-x-auto">
-        <table className="table">
+      <div className="flex overflow-x-auto">
+        <table className="table overflow-x-scroll ">
           {/* head */}
           <thead>
             <tr>
