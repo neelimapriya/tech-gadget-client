@@ -63,7 +63,7 @@ const Login = () => {
                 </label>
                 <input
                   name="password"
-                  type="password"
+                  type="text"
                   placeholder="password"
                   className="input input-bordered text-black"
                   required

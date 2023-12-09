@@ -1,8 +1,18 @@
-# React + Vite
+## Live link: https://tech-project-b747f.web.app 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+**About this project**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+This is a Tech Products management website. Where user can see Different kinds
+of Tech Products, they can give reviews and vote of those products. This website
+has 3 roles -Admin, moderator and user. Admin can Manage user, manage coupon
+and see overview of the site. Moderator can manage users post , Reported
+Contents etc. Register user can Add their products for votes and reviews.
+
+
+
+
+
+
+
